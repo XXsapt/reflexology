@@ -103,7 +103,7 @@ export default function Home() {
           <div className="hero-badge">
             <span />Traditional Javanese Wellness
           </div>
-          <Image src="/logo.png" alt="Ayna Spa Logo" width={280} height={280} className="hero-logo" priority />
+          <Image src="/logo.png" alt="Ayna Spa Logo" width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
             <em>Ayna</em> Healthy<br />Reflexology & Spa
           </h1>

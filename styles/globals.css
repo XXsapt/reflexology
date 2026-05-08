@@ -132,7 +132,8 @@ body {
   max-width: 800px;
   width: 100%;
 }
-.hero-logo { width: clamp(160px, 28vw, 280px); margin-bottom: 32px; filter: drop-shadow(0 8px 32px rgba(201,168,76,0.25)); animation: floatLogo 6s ease-in-out infinite; }
+.hero-logo { width: clamp(120px, 28vw, 240px); height: auto; margin-bottom: 32px; filter: drop-shadow(0 8px 32px rgba(201,168,76,0.25)); animation: floatLogo 6s ease-in-out infinite; }
+@media(max-width: 768px) { .hero-logo { width: min(44vw, 160px); } }
 
 @keyframes floatLogo { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
