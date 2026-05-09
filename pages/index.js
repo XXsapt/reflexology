@@ -105,11 +105,11 @@ export default function Home() {
           </div>
           <Image src="/logo.png" alt="Ayna Spa Logo" width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
-            <em>Ayna</em> Healthy<br />Reflexology & Spa
+            <em>Ayna</em> Massage<br />Spa & Reflexology
           </h1>
           <p className="hero-subtitle">Calm Ambience · Healing Touch · Aroma Therapy</p>
           <p className="hero-desc">
-            Nikmati pengalaman relaksasi dengan sentuhan pijat tradisional Jawa yang menenangkan tubuh dan pikiran. 
+            Nikmati pengalaman relaksasi dengan sentuhan pijat tradisional Jawa yang menenangkan tubuh dan pikiran.
             Dengan suasana hangat, aroma terapi, serta pelayanan profesional. 🌿🕯️
           </p>
           <div className="hero-actions">
