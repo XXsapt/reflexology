@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Ganti domain di bawah dengan domain asli kamu
+Sitemap: https://www.aynaspa.com/sitemap.xml

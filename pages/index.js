@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const translations = {
   IDN: {
@@ -99,9 +100,9 @@ const translations = {
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [lang, setLang] = useState('IDN');
-
-  const t = translations[lang];
+  const router = useRouter();
+  const locale = router.locale || 'id';
+  const t = translations[locale === 'en' ? 'EN' : 'IDN'];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -117,16 +118,98 @@ export default function Home() {
   }, []);
 
   const waLink = 'https://wa.me/6281230181886?text=Halo%20Ayna%20Spa%2C%20saya%20ingin%20booking%20treatment';
+  const DOMAIN = 'https://www.aynaspa.com'; // TODO: ganti dengan domain asli kamu
+  const canonicalUrl = locale === 'en' ? `${DOMAIN}/en` : `${DOMAIN}/`;
 
   return (
     <>
       <Head>
-        <title>Ayna Massage Spa &amp; Reflexology — Traditional Javanese Wellness</title>
-        <meta name="description" content="Nikmati pengalaman relaksasi pijat tradisional Jawa di Ayna Healthy Reflexology &amp; Spa. Tersedia Javanese Massage, Foot Reflexology, Totok Wajah, Kerokan, dan Scrub dengan harga terjangkau." />
-        <meta name="keywords" content="reflexology, spa, pijat tradisional jawa, foot reflexology, totok wajah, kerokan, massage" />
-        <meta property="og:title" content="Ayna Healthy Reflexology &amp; Spa" />
-        <meta property="og:description" content="Traditional Javanese Wellness Experience" />
+        {/* === PRIMARY META === */}
+        <title>{locale === 'en'
+          ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
+          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+        }</title>
+        <meta name="description" content={locale === 'en'
+          ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. Professional service, aromatherapy, from 50K. Book via WhatsApp!'
+          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Layanan profesional, aroma therapy, harga mulai 50K. Booking via WhatsApp!'
+        } />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="id" href={`${DOMAIN}/`} />
+        <link rel="alternate" hrefLang="en" href={`${DOMAIN}/en`} />
+        <link rel="alternate" hrefLang="x-default" href={`${DOMAIN}/`} />
+
+        {/* === OPEN GRAPH === */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Ayna Massage Spa & Reflexology" />
+        <meta property="og:title" content={locale === 'en'
+          ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
+          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+        } />
+        <meta property="og:description" content={locale === 'en'
+          ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. From 50K.'
+          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Harga mulai 50K.'
+        } />
+        <meta property="og:image" content={`${DOMAIN}/logo_11zon.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'id_ID'} />
+
+        {/* === TWITTER CARD === */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ayna Massage Spa &amp; Reflexology" />
+        <meta name="twitter:description" content={locale === 'en'
+          ? 'Javanese Traditional Massage · Foot Reflexology · Totok Wajah · Kerokan. From 50K.'
+          : 'Pijat tradisional Jawa · Foot Reflexology · Totok Wajah · Kerokan. Harga mulai 50K.'
+        } />
+        <meta name="twitter:image" content={`${DOMAIN}/logo_11zon.jpg`} />
+
+        {/* === STRUCTURED DATA (JSON-LD) === */}
+        {/* TODO: Lengkapi addressLocality & addressRegion dengan kota/provinsi asli */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HealthAndBeautyBusiness",
+              "name": "Ayna Massage Spa & Reflexology",
+              "description": "Pijat tradisional Jawa, Foot Reflexology, Totok Wajah, Kerokan Therapy, dan Massage + Scrub dengan harga terjangkau.",
+              "url": "https://www.aynaspa.com",
+              "telephone": "+6281230181886",
+              "priceRange": "Rp 50.000 - Rp 225.000",
+              "image": "https://www.aynaspa.com/logo_11zon.jpg",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Surabaya",
+                "addressRegion": "Jawa Timur",
+                "addressCountry": "ID"
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                  "opens": "09:00",
+                  "closes": "21:00"
+                }
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Layanan Ayna Spa",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Javanese Traditional Massage" }, "price": "135000", "priceCurrency": "IDR" },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foot Reflexology" }, "price": "120000", "priceCurrency": "IDR" },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Totok Wajah (Face Acupressure)" }, "price": "50000", "priceCurrency": "IDR" },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kerokan Therapy" }, "price": "50000", "priceCurrency": "IDR" },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Massage + Scrub" }, "price": "195000", "priceCurrency": "IDR" }
+                ]
+              },
+              "sameAs": [
+                "https://wa.me/6281230181886"
+              ]
+            })
+          }}
+        />
       </Head>
 
       {/* WATERMARK DEMO */}
@@ -148,18 +231,18 @@ export default function Home() {
           <div className="lang-switcher" role="group" aria-label="Language switcher">
             <button
               id="lang-idn"
-              className={`lang-btn${lang === 'IDN' ? ' active' : ''}`}
-              onClick={() => setLang('IDN')}
-              aria-pressed={lang === 'IDN'}
+              className={`lang-btn${locale !== 'en' ? ' active' : ''}`}
+              onClick={() => router.push('/', '/', { locale: 'id' })}
+              aria-pressed={locale !== 'en'}
             >
               IDN
             </button>
             <span className="lang-divider" aria-hidden="true">|</span>
             <button
               id="lang-en"
-              className={`lang-btn${lang === 'EN' ? ' active' : ''}`}
-              onClick={() => setLang('EN')}
-              aria-pressed={lang === 'EN'}
+              className={`lang-btn${locale === 'en' ? ' active' : ''}`}
+              onClick={() => router.push('/', '/', { locale: 'en' })}
+              aria-pressed={locale === 'en'}
             >
               EN
             </button>
@@ -177,7 +260,7 @@ export default function Home() {
           <div className="hero-badge">
             <span />{t.heroBadge}
           </div>
-          <Image src="/logo.png" alt="Ayna Spa Logo" width={280} height={350} className="hero-logo" priority />
+          <Image src="/logo_11zon.jpg" alt="Logo Ayna Massage Spa & Reflexology — Pijat Tradisional Jawa" width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
             <em>Ayna</em> Massage<br />Spa &amp; Reflexology
           </h1>
@@ -196,7 +279,7 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-image-box reveal">
               <div className="about-logo-wrap">
-                <Image src="/logo.png" alt="Ayna Spa" width={260} height={260} />
+                <Image src="/logo_11zon.jpg" alt="Ayna Massage Spa — Traditional Javanese Wellness" width={260} height={260} />
               </div>
             </div>
             <div className="about-text reveal">

@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
+  },
+  i18n: {
+    locales: ['id', 'en'],
+    defaultLocale: 'id',
   },
 };
 
