@@ -470,6 +470,7 @@ body {
 @media(max-width:768px) {
   .about-grid {
     grid-template-columns: 1fr;
+    text-align: center;
   }
 }
 
@@ -836,6 +837,14 @@ body {
 
   .navbar {
     padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo-text {
+    font-size: 18px;
+    white-space: nowrap;
   }
 
   .nav-right {
