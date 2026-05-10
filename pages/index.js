@@ -235,6 +235,7 @@ export default function Home() {
               onClick={() => router.push('/', '/', { locale: 'id' })}
               aria-pressed={locale !== 'en'}
             >
+              <img src="https://flagcdn.com/w20/id.png" srcSet="https://flagcdn.com/w40/id.png 2x" width="20" height="14" alt="Bendera Indonesia" className="lang-flag" />
               IDN
             </button>
             <span className="lang-divider" aria-hidden="true">|</span>
@@ -244,6 +245,7 @@ export default function Home() {
               onClick={() => router.push('/', '/', { locale: 'en' })}
               aria-pressed={locale === 'en'}
             >
+              <img src="https://flagcdn.com/w20/gb.png" srcSet="https://flagcdn.com/w40/gb.png 2x" width="20" height="14" alt="UK Flag" className="lang-flag" />
               EN
             </button>
           </div>
