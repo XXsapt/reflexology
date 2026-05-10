@@ -402,7 +402,7 @@ export default function Home() {
           <a href={waLink} target="_blank" rel="noopener noreferrer">WA: 0812-3018-1886</a>
         </p>
         <p className="footer-text" style={{ marginTop: 16, fontSize: 12, opacity: 0.5 }}>
-          © {new Date().getFullYear()} Ayna Healthy Reflexology &amp; Spa. All rights reserved.
+          © {new Date().getFullYear()} Ayna Massage Spa &amp; Reflexology. All rights reserved.
         </p>
       </footer>
     </>
