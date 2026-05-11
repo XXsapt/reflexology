@@ -151,7 +151,7 @@ export default function Home() {
           ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. From 50K.'
           : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Harga mulai 50K.'
         } />
-        <meta property="og:image" content={`${DOMAIN}/logo_11zon.jpg`} />
+        <meta property="og:image" content={`${DOMAIN}/logo-ayna.jpg`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'id_ID'} />
@@ -163,7 +163,7 @@ export default function Home() {
           ? 'Javanese Traditional Massage · Foot Reflexology · Totok Wajah · Kerokan. From 50K.'
           : 'Pijat tradisional Jawa · Foot Reflexology · Totok Wajah · Kerokan. Harga mulai 50K.'
         } />
-        <meta name="twitter:image" content={`${DOMAIN}/logo_11zon.jpg`} />
+        <meta name="twitter:image" content={`${DOMAIN}/logo-ayna.jpg`} />
 
         {/* === STRUCTURED DATA (JSON-LD) === */}
         {/* TODO: Lengkapi addressLocality & addressRegion dengan kota/provinsi asli */}
@@ -178,7 +178,7 @@ export default function Home() {
               "url": "https://www.aynaspa.com",
               "telephone": "+6281230181886",
               "priceRange": "Rp 50.000 - Rp 225.000",
-              "image": "https://www.aynaspa.com/logo_11zon.jpg",
+              "image": "https://www.aynaspa.com/logo-ayna.jpg",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Surabaya",
@@ -262,7 +262,7 @@ export default function Home() {
           <div className="hero-badge">
             <span />{t.heroBadge}
           </div>
-          <Image src="/logo_11zon.jpg" alt="Logo Ayna Massage Spa & Reflexology — Pijat Tradisional Jawa" width={280} height={350} className="hero-logo" priority />
+          <Image src="/logo-ayna.jpg" alt="Logo Ayna Massage Spa & Reflexology — Pijat Tradisional Jawa" width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
             <em>Ayna</em> Massage<br />Spa &amp; Reflexology
           </h1>
@@ -281,7 +281,7 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-image-box reveal">
               <div className="about-logo-wrap">
-                <Image src="/logo_11zon.jpg" alt="Ayna Massage Spa — Traditional Javanese Wellness" width={260} height={260} />
+                <Image src="/logo-ayna.jpg" alt="Ayna Massage Spa — Traditional Javanese Wellness" width={260} height={260} />
               </div>
             </div>
             <div className="about-text reveal">
