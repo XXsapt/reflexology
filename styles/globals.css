@@ -52,7 +52,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(80px, 18vw, 220px);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.40);
+  color: rgba(255, 255, 255, 0.60);
   transform: rotate(-35deg);
   letter-spacing: 0.3em;
   user-select: none;
