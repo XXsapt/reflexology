@@ -10,14 +10,15 @@ const translations = {
     navBenefits: 'Manfaat',
     navContact: 'Kontak',
     navCta: 'Booking Sekarang',
+    heroTitle: <><em>Ayna</em> Pijat<br />Panggilan Surabaya</>,
     heroBadge: 'Traditional Javanese Wellness',
     heroSubtitle: 'Calm Ambience · Healing Touch · Aroma Therapy',
-    heroDesc: 'Nikmati pengalaman relaksasi dengan sentuhan pijat tradisional Jawa yang menenangkan tubuh dan pikiran. Dengan suasana hangat, aroma terapi, serta pelayanan profesional. 🌿🕯️',
+    heroDesc: 'Mencari jasa pijat Surabaya yang bisa datang ke tempat? Ayna pijat panggilan Surabaya adalah solusi terbaik untuk merelaksasi tubuh Anda dengan pijat tradisional Jawa yang menenangkan. 🌿🕯️',
     heroPrimary: '🌿 Booking Sekarang',
     heroSecondary: 'Lihat Layanan →',
     aboutLabel: 'Tentang Kami',
     aboutHeading: <>Sentuhan <em>Tradisional</em>,<br />Kesegaran Modern</>,
-    aboutP1: 'Ayna Massage Spa & Reflexology menghadirkan pengalaman wellness yang memadukan kearifan lokal pijat tradisional Jawa dengan suasana spa modern siap datang ke tempat anda kapan saja.',
+    aboutP1: 'Ayna Massage Spa & Reflexology menghadirkan layanan pijat panggilan Surabaya profesional yang memadukan kearifan lokal pijat tradisional Jawa dengan suasana spa modern. Kami siap datang ke rumah, apartemen, atau hotel Anda kapan saja.',
     aboutP2: 'Setiap treatment dirancang untuk membantu mengurangi pegal, stres, dan mengembalikan kesegaran tubuh Anda. Cocok untuk melepas lelah setelah aktivitas harian yang padat.',
     stat1Label: 'Jenis Layanan',
     stat2Label: 'Profesional',
@@ -56,6 +57,7 @@ const translations = {
     navBenefits: 'Benefits',
     navContact: 'Contact',
     navCta: 'Book Now',
+    heroTitle: <><em>Ayna</em> Massage<br />Spa &amp; Reflexology</>,
     heroBadge: 'Traditional Javanese Wellness',
     heroSubtitle: 'Calm Ambience · Healing Touch · Aroma Therapy',
     heroDesc: 'Enjoy a relaxing experience with traditional Javanese massage techniques that calm your body and mind. With a warm atmosphere, aromatherapy, and professional service. 🌿🕯️',
@@ -127,11 +129,11 @@ export default function Home() {
         {/* === PRIMARY META === */}
         <title>{locale === 'en'
           ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
-          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+          : 'Ayna Pijat Panggilan Surabaya | Reflexology & Spa Profesional'
         }</title>
         <meta name="description" content={locale === 'en'
           ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. Professional service, aromatherapy, from 50K. Book via WhatsApp!'
-          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Layanan profesional, aroma therapy, harga mulai 50K. Booking via WhatsApp!'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke rumah atau hotel Anda. Pesan sekarang!'
         } />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
@@ -145,11 +147,11 @@ export default function Home() {
         <meta property="og:site_name" content="Ayna Massage Spa & Reflexology" />
         <meta property="og:title" content={locale === 'en'
           ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
-          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+          : 'Ayna Pijat Panggilan Surabaya | Reflexology & Spa Profesional'
         } />
         <meta property="og:description" content={locale === 'en'
           ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. From 50K.'
-          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Harga mulai 50K.'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke rumah atau hotel Anda. Pesan sekarang!'
         } />
         <meta property="og:image" content={`${DOMAIN}/logo-ayna.jpg`} />
         <meta property="og:image:width" content="1200" />
@@ -161,7 +163,7 @@ export default function Home() {
         <meta name="twitter:title" content="Ayna Massage Spa &amp; Reflexology" />
         <meta name="twitter:description" content={locale === 'en'
           ? 'Javanese Traditional Massage · Foot Reflexology · Totok Wajah · Kerokan. From 50K.'
-          : 'Pijat tradisional Jawa · Foot Reflexology · Totok Wajah · Kerokan. Harga mulai 50K.'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke tempat Anda.'
         } />
         <meta name="twitter:image" content={`${DOMAIN}/logo-ayna.jpg`} />
 
@@ -174,7 +176,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "HealthAndBeautyBusiness",
               "name": "Ayna Massage Spa & Reflexology",
-              "description": "Pijat tradisional Jawa, Foot Reflexology, Totok Wajah, Kerokan Therapy, dan Massage + Scrub dengan harga terjangkau.",
+              "description": "Layanan Ayna pijat panggilan Surabaya untuk pijat tradisional Jawa, Foot Reflexology, Totok Wajah, dan Spa dengan harga terjangkau.",
               "url": "https://www.aynamassage.com",
               "telephone": "+6281230181886",
               "priceRange": "Rp 50.000 - Rp 225.000",
@@ -262,9 +264,9 @@ export default function Home() {
           <div className="hero-badge">
             <span />{t.heroBadge}
           </div>
-          <Image src="/logo-ayna.jpg" alt="Logo Ayna Massage Spa & Reflexology — Pijat Tradisional Jawa" width={280} height={350} className="hero-logo" priority />
+          <Image src="/logo-ayna.jpg" alt={locale === 'en' ? "Ayna Massage Spa & Reflexology Surabaya" : "Ayna Pijat Panggilan Surabaya — Terapis Profesional"} width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
-            <em>Ayna</em> Massage<br />Spa &amp; Reflexology
+            {t.heroTitle}
           </h1>
           <p className="hero-subtitle">{t.heroSubtitle}</p>
           <p className="hero-desc">{t.heroDesc}</p>
@@ -281,7 +283,7 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-image-box reveal">
               <div className="about-logo-wrap">
-                <Image src="/logo-ayna.jpg" alt="Ayna Massage Spa — Traditional Javanese Wellness" width={260} height={260} />
+                <Image src="/logo-ayna.jpg" alt={locale === 'en' ? "Ayna Massage Spa — Traditional Javanese Wellness" : "Ayna Pijat Panggilan Surabaya — Reflexology & Spa"} width={260} height={260} />
               </div>
             </div>
             <div className="about-text reveal">
