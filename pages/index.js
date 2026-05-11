@@ -118,7 +118,7 @@ export default function Home() {
   }, []);
 
   const waLink = 'https://wa.me/6281230181886?text=Halo%20Ayna%20Spa%2C%20saya%20ingin%20booking%20treatment';
-  const DOMAIN = 'https://www.aynaspa.com'; // TODO: ganti dengan domain asli kamu
+  const DOMAIN = 'https://www.aynamassage.com';
   const canonicalUrl = locale === 'en' ? `${DOMAIN}/en` : `${DOMAIN}/`;
 
   return (
@@ -175,10 +175,10 @@ export default function Home() {
               "@type": "HealthAndBeautyBusiness",
               "name": "Ayna Massage Spa & Reflexology",
               "description": "Pijat tradisional Jawa, Foot Reflexology, Totok Wajah, Kerokan Therapy, dan Massage + Scrub dengan harga terjangkau.",
-              "url": "https://www.aynaspa.com",
+              "url": "https://www.aynamassage.com",
               "telephone": "+6281230181886",
               "priceRange": "Rp 50.000 - Rp 225.000",
-              "image": "https://www.aynaspa.com/logo-ayna.jpg",
+              "image": "https://www.aynamassage.com/logo-ayna.jpg",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Surabaya",
