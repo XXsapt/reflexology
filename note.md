@@ -51,3 +51,21 @@ Website Anda dibangun dengan Next.js, jadi performa dasarnya sudah sangat baik. 
 ---
 
 **Catatan Penting**: SEO (Search Engine Optimization) bukanlah proses instan (berbeda dengan memasang iklan berbayar seperti Google Ads). Optimasi SEO membutuhkan waktu (biasanya beberapa minggu hingga 3-6 bulan) agar Google mengenali kualitas website Anda dan perlahan menaikkan peringkatnya. Kuncinya adalah **konsistensi** dan terus memperbanyak **ulasan positif di Google Maps**.
+
+## 5. Panduan Menghapus Fitur Countdown (Penting!)
+
+Kamu telah menambahkan sebuah *timer* hitung mundur menuju **Jumat, 15 Mei 2026 jam 24:00**. Jika *timer* ini tidak dihapus sebelum batas waktu tersebut, website akan memunculkan gambar emote "🙏" secara *full-screen* dan menutupi seluruh isi konten!
+
+Untuk membuat website tetap aman dan menghilangkan batasan waktu tersebut, pastikan kamu menghapus baris-baris berikut di dalam file `pages/index.js` **SEBELUM** batas waktunya habis:
+
+1. Buka file `pages/index.js`
+2. Cari dan **HAPUS** kode pemanggilan komponen untuk desktop (sekitar baris 243):
+   ```jsx
+   <div className="countdown-desktop"><Countdown /></div>
+   ```
+3. Cari dan **HAPUS** juga kode pemanggilan komponen untuk mobile (sekitar baris 246):
+   ```jsx
+   <div className="countdown-mobile"><Countdown /></div>
+   ```
+
+Setelah 2 baris kode pemanggilan di atas dihapus, website kamu akan aman selamanya. File `components/Countdown.js` sendiri tidak perlu dihapus karena sudah tidak akan dieksekusi lagi jika pemanggilannya di `index.js` dihilangkan.

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Countdown from '../components/Countdown';
 
 const translations = {
   IDN: {
@@ -239,7 +240,13 @@ export default function Home() {
 
       {/* NAVBAR */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-logo-text">✨ AYNA SPA</div>
+        <div className="nav-logo-container">
+          <div className="nav-logo-text">✨ AYNA SPA</div>
+          <div className="countdown-desktop"><Countdown /></div>
+        </div>
+        
+        <div className="countdown-mobile"><Countdown /></div>
+
         <ul className="nav-links">
           <li><a href="#about">{t.navAbout}</a></li>
           <li><a href="#services">{t.navServices}</a></li>

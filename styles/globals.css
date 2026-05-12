@@ -942,3 +942,59 @@ body {
   font-size: 16px;
   opacity: 0.7;
 }
+
+/* COUNTDOWN TIMER */
+.nav-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.countdown-desktop {
+  margin-top: 2px;
+}
+
+.countdown-mobile {
+  display: none;
+}
+
+.countdown-timer {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff4d4d;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+}
+
+.punishment-emote {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(100px, 40vw, 400px);
+}
+
+@media(max-width: 768px) {
+  .nav-logo-container {
+    align-items: center;
+  }
+  .countdown-desktop {
+    display: none;
+  }
+  .countdown-mobile {
+    display: block;
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .countdown-timer {
+    font-size: 11px;
+  }
+}
