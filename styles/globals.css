@@ -685,6 +685,46 @@ body {
   font-weight: 300;
 }
 
+/* FAQ */
+.faq {
+  background: var(--dark-3);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 16px;
+  padding: 24px 32px;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  background: rgba(201, 168, 76, 0.05);
+  border-color: rgba(201, 168, 76, 0.25);
+}
+
+.faq-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+}
+
+.faq-a {
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
 /* CONTACT */
 .contact {
   background: var(--dark-2);
