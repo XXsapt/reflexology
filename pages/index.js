@@ -233,19 +233,11 @@ export default function Home() {
         />
       </Head>
 
-      {/* WATERMARK DEMO */}
-      <div className="watermark" aria-hidden="true">
-        <span className="watermark-text">DEMO</span>
-      </div>
-
       {/* NAVBAR */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-logo-container">
           <div className="nav-logo-text">✨ AYNA SPA</div>
-          <div className="countdown-desktop"><Countdown /></div>
         </div>
-        
-        <div className="countdown-mobile"><Countdown /></div>
 
         <ul className="nav-links">
           <li><a href="#about">{t.navAbout}</a></li>
