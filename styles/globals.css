@@ -997,4 +997,64 @@ body {
   .countdown-timer {
     font-size: 11px;
   }
+}
+
+/* INSTAGRAM & SOCIAL BUTTONS */
+.contact-social-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 8px 30px rgba(253, 29, 29, 0.3);
+  letter-spacing: 0.03em;
+}
+
+.ig-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(253, 29, 29, 0.45);
+  opacity: 0.92;
+}
+
+.ig-icon {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+/* FOOTER SOCIALS */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer-social-link:hover {
+  color: var(--gold);
 }
