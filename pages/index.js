@@ -2,36 +2,42 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Countdown from '../components/Countdown';
 
 const translations = {
   IDN: {
     navAbout: 'Tentang',
     navServices: 'Layanan',
     navBenefits: 'Manfaat',
+    navFaq: 'FAQ',
     navContact: 'Kontak',
     navCta: 'Booking Sekarang',
-    heroBadge: 'Traditional Javanese Wellness',
+    heroTitle: <><em>Ayna</em> Pijat Panggilan Surabaya</>,
+    heroBadge: 'Traditional Javanese Wellness & Spa',
     heroSubtitle: 'Calm Ambience · Healing Touch · Aroma Therapy',
-    heroDesc: 'Nikmati pengalaman relaksasi dengan sentuhan pijat tradisional Jawa yang menenangkan tubuh dan pikiran. Dengan suasana hangat, aroma terapi, serta pelayanan profesional. 🌿🕯️',
+    heroDesc: 'Mencari jasa pijat Surabaya yang profesional dan bisa datang langsung ke tempat Anda? Ayna Pijat Panggilan Surabaya adalah solusi terbaik untuk merelaksasi tubuh Anda dengan teknik pijat tradisional Jawa yang menenangkan. Kami menghadirkan pengalaman spa premium langsung ke rumah, apartemen, atau kamar hotel Anda tanpa perlu repot keluar rumah. Nikmati layanan pijat 24 jam dengan terapis berpengalaman. 🌿🕯️',
     heroPrimary: '🌿 Booking Sekarang',
     heroSecondary: 'Lihat Layanan →',
     aboutLabel: 'Tentang Kami',
-    aboutHeading: <>Sentuhan <em>Tradisional</em>,<br />Kesegaran Modern</>,
-    aboutP1: 'Ayna Massage Spa & Reflexology menghadirkan pengalaman wellness yang memadukan kearifan lokal pijat tradisional Jawa dengan suasana spa modern siap datang ke tempat anda kapan saja.',
-    aboutP2: 'Setiap treatment dirancang untuk membantu mengurangi pegal, stres, dan mengembalikan kesegaran tubuh Anda. Cocok untuk melepas lelah setelah aktivitas harian yang padat.',
+    aboutHeading: <>Sentuhan <em>Tradisional</em>, Kesegaran Modern</>,
+    aboutP1: 'Ayna Massage Spa & Reflexology menghadirkan layanan pijat panggilan Surabaya profesional yang memadukan kearifan lokal pijat tradisional Jawa dengan suasana spa modern yang mewah. Kami memahami bahwa kesibukan sehari-hari di kota besar seperti Surabaya dapat membuat tubuh dan pikiran menjadi tegang. Oleh karena itu, kami siap datang ke lokasi Anda kapan saja untuk memberikan perawatan terbaik.',
+    aboutP2: 'Setiap treatment yang kami tawarkan dirancang secara khusus untuk membantu mengurangi pegal, meredakan stres, melancarkan peredaran darah, dan mengembalikan kesegaran tubuh Anda secara menyeluruh. Sangat cocok untuk melepas lelah setelah aktivitas harian yang padat, setelah perjalanan panjang, atau sekadar memberikan waktu untuk memanjakan diri Anda (me-time).',
+    aboutP3: 'Didukung oleh tim terapis wanita dan pria yang tersertifikasi, ramah, dan berpengalaman, kami menjamin kualitas pijat yang aman, nyaman, dan berstandar tinggi. Kami juga selalu menjaga kebersihan peralatan serta menggunakan minyak esensial dan aromaterapi berkualitas yang aman bagi kulit Anda.',
     stat1Label: 'Jenis Layanan',
     stat2Label: 'Profesional',
     stat3Label: 'Bahan Alami',
     stat4Label: 'Aroma Therapy',
     servicesLabel: 'Price List',
-    servicesTitle: <>Pilihan <em>Layanan</em> Kami</>,
+    servicesTitle: <>Pilihan <em>Layanan</em> Pijat Kami</>,
     tarif: 'Tarif',
     benefitsLabel: 'Manfaat',
-    benefitsTitle: <>Relax Your Body,<br /><em>Calm Your Mind</em></>,
-    benefitsDesc: 'Perpaduan teknik pijat tradisional dan suasana spa yang nyaman membantu tubuh terasa lebih ringan, rileks, dan kembali segar. 🕯️✨',
+    benefitsTitle: <>Relax Your Body, <em>Calm Your Mind</em></>,
+    benefitsDesc: 'Perpaduan teknik pijat tradisional dan suasana spa yang nyaman membantu tubuh terasa lebih ringan, rileks, dan kembali segar. Rasakan berbagai manfaat kesehatan dan relaksasi dari layanan pijat kami. 🕯️✨',
+    faqLabel: 'Pertanyaan Umum',
+    faqTitle: <>Yang Sering <em>Ditanyakan</em></>,
     contactLabel: 'Hubungi Kami',
-    contactTitle: <>Siap untuk <em>Relaksasi</em>?</>,
-    contactSub: 'Booking sekarang melalui WhatsApp dan kami siap melayani Anda 🌿',
+    contactTitle: <>Siap untuk <em>Relaksasi</em> di Surabaya?</>,
+    contactSub: 'Booking layanan pijat panggilan kami sekarang melalui WhatsApp. Admin kami responsif dan siap membantu menyesuaikan jadwal terapi Anda 🌿',
     contactInfoLabel1: 'Telepon / WA',
     contactInfoLabel2: 'Layanan',
     contactInfoLabel3: 'Suasana',
@@ -44,40 +50,50 @@ const translations = {
       { icon: '🔥', title: 'Kerokan Therapy', flat: '50K' },
     ],
     benefits: [
-      { icon: '🌿', title: 'Mengurangi Pegal', desc: 'Teknik pijat tradisional Jawa efektif meredakan ketegangan otot dan rasa pegal setelah aktivitas harian.' },
-      { icon: '🧘', title: 'Meredakan Stres', desc: 'Sentuhan terapeutik dan aroma terapi membantu menenangkan pikiran serta menurunkan tingkat stres.' },
-      { icon: '😴', title: 'Kualitas Tidur', desc: 'Relaksasi mendalam membantu memperbaiki pola dan kualitas istirahat malam Anda.' },
-      { icon: '💪', title: 'Kebugaran Tubuh', desc: 'Perawatan rutin menjaga kebugaran tubuh dan meningkatkan sirkulasi darah secara optimal.' },
+      { icon: '🌿', title: 'Mengurangi Pegal & Nyeri', desc: 'Teknik pijat tradisional Jawa yang kami gunakan sangat efektif meredakan ketegangan otot, rasa pegal, dan nyeri sendi setelah seharian bekerja atau beraktivitas berat.' },
+      { icon: '🧘', title: 'Meredakan Stres & Penat', desc: 'Sentuhan terapeutik dikombinasikan dengan aroma terapi pilihan dapat membantu menenangkan pikiran, meredakan kecemasan, serta menurunkan tingkat stres Anda.' },
+      { icon: '😴', title: 'Meningkatkan Kualitas Tidur', desc: 'Relaksasi mendalam dari pijatan kami membantu mengatasi masalah insomnia, serta memperbaiki pola dan kualitas istirahat malam Anda agar bangun lebih segar.' },
+      { icon: '💪', title: 'Menjaga Kebugaran Tubuh', desc: 'Perawatan rutin di Ayna Spa dapat menjaga kebugaran tubuh, meningkatkan sistem imun, dan melancarkan sirkulasi peredaran darah secara optimal ke seluruh tubuh.' },
     ],
+    faqs: [
+      { q: 'Apakah Ayna Pijat melayani panggilan ke hotel dan apartemen?', a: 'Tentu saja! Kami melayani panggilan ke rumah, kos, apartemen, maupun hotel di seluruh area Surabaya dan sekitarnya.' },
+      { q: 'Bagaimana cara melakukan pemesanan (booking)?', a: 'Anda dapat dengan mudah memesan layanan kami melalui tombol WhatsApp yang tersedia di website ini. Admin kami akan segera merespons untuk mengatur jadwal terapis.' },
+      { q: 'Apakah terapis di Ayna Massage profesional?', a: 'Ya, semua terapis kami telah melalui proses seleksi dan pelatihan ketat. Mereka sangat berpengalaman, ramah, dan profesional dalam memberikan berbagai jenis terapi pijat.' },
+    ]
   },
   EN: {
     navAbout: 'About',
     navServices: 'Services',
     navBenefits: 'Benefits',
+    navFaq: 'FAQ',
     navContact: 'Contact',
     navCta: 'Book Now',
+    heroTitle: <><em>Ayna</em> Massage &amp; Spa Surabaya</>,
     heroBadge: 'Traditional Javanese Wellness',
     heroSubtitle: 'Calm Ambience · Healing Touch · Aroma Therapy',
-    heroDesc: 'Enjoy a relaxing experience with traditional Javanese massage techniques that calm your body and mind. With a warm atmosphere, aromatherapy, and professional service. 🌿🕯️',
+    heroDesc: 'Looking for a professional massage service in Surabaya that comes directly to you? Enjoy a deeply relaxing experience with traditional Javanese massage techniques that calm your body and mind. We bring a premium spa experience directly to your home, apartment, or hotel room without the hassle of traveling. Experience our warm atmosphere, soothing aromatherapy, and exceptional professional service. 🌿🕯️',
     heroPrimary: '🌿 Book Now',
     heroSecondary: 'View Services →',
     aboutLabel: 'About Us',
-    aboutHeading: <><em>Traditional</em> Touch,<br />Modern Freshness</>,
-    aboutP1: 'Ayna Massage Spa & Reflexology brings a wellness experience that combines traditional Javanese massage wisdom with a modern spa atmosphere, ready to come to you anytime.',
-    aboutP2: 'Every treatment is designed to help relieve muscle aches, stress, and restore your body\'s vitality. Perfect for unwinding after a long, busy day.',
+    aboutHeading: <><em>Traditional</em> Touch, Modern Freshness</>,
+    aboutP1: 'Ayna Massage Spa & Reflexology brings a holistic wellness experience that beautifully combines traditional Javanese massage wisdom with a modern, luxurious spa atmosphere. We understand that living or traveling in a bustling city like Surabaya can leave you feeling tense and exhausted. That is why we are ready to come to your location anytime to deliver the ultimate relaxation experience directly to you.',
+    aboutP2: 'Every treatment we offer is carefully designed by our experts to help relieve stubborn muscle aches, reduce daily stress, improve blood circulation, and restore your body\'s vitality. Our services are absolutely perfect for unwinding after a long, busy day at work, recovering from extensive travel, or simply taking some well-deserved time off to pamper yourself.',
+    aboutP3: 'Supported by a dedicated team of certified, friendly, and highly experienced therapists, we guarantee a safe, comfortable, and top-tier massage experience. We strictly maintain the cleanliness of all our equipment and only use high-quality, skin-safe essential oils and aromatherapy blends.',
     stat1Label: 'Service Types',
     stat2Label: 'Professional',
     stat3Label: 'Natural Ingredients',
     stat4Label: 'Aroma Therapy',
     servicesLabel: 'Price List',
-    servicesTitle: <>Our <em>Services</em></>,
+    servicesTitle: <>Our Massage <em>Services</em></>,
     tarif: 'Rate',
     benefitsLabel: 'Benefits',
-    benefitsTitle: <>Relax Your Body,<br /><em>Calm Your Mind</em></>,
-    benefitsDesc: 'The combination of traditional massage techniques and a comfortable spa atmosphere helps your body feel lighter, more relaxed, and refreshed. 🕯️✨',
+    benefitsTitle: <>Relax Your Body, <em>Calm Your Mind</em></>,
+    benefitsDesc: 'The perfect combination of authentic traditional massage techniques and a comfortable spa atmosphere helps your body feel incredibly lighter, deeply relaxed, and fully refreshed. Discover the amazing health and wellness benefits of our professional therapies. 🕯️✨',
+    faqLabel: 'Frequently Asked Questions',
+    faqTitle: <>Common <em>Questions</em></>,
     contactLabel: 'Contact Us',
-    contactTitle: <>Ready to <em>Relax</em>?</>,
-    contactSub: 'Book now via WhatsApp and we are ready to serve you 🌿',
+    contactTitle: <>Ready to <em>Relax</em> in Surabaya?</>,
+    contactSub: 'Book your home-service massage now via WhatsApp. Our friendly admin is ready to assist you in scheduling your perfect therapy session 🌿',
     contactInfoLabel1: 'Phone / WA',
     contactInfoLabel2: 'Service',
     contactInfoLabel3: 'Atmosphere',
@@ -90,11 +106,16 @@ const translations = {
       { icon: '🔥', title: 'Kerokan Therapy', flat: '50K' },
     ],
     benefits: [
-      { icon: '🌿', title: 'Relieve Soreness', desc: 'Traditional Javanese massage techniques effectively relieve muscle tension and soreness after daily activities.' },
-      { icon: '🧘', title: 'Reduce Stress', desc: 'Therapeutic touch and aromatherapy help calm the mind and lower stress levels.' },
-      { icon: '😴', title: 'Sleep Quality', desc: 'Deep relaxation helps improve the pattern and quality of your nightly rest.' },
-      { icon: '💪', title: 'Body Fitness', desc: 'Regular treatments maintain body fitness and optimally improve blood circulation.' },
+      { icon: '🌿', title: 'Relieve Muscle Soreness', desc: 'Our authentic traditional Javanese massage techniques are highly effective in relieving muscle tension, stiff joints, and soreness after your busy daily activities or intense workouts.' },
+      { icon: '🧘', title: 'Reduce Stress & Anxiety', desc: 'The soothing therapeutic touch combined with our premium selected aromatherapy helps calm an overactive mind, alleviate anxiety, and significantly lower your overall stress levels.' },
+      { icon: '😴', title: 'Improve Sleep Quality', desc: 'The deep relaxation achieved from our massage sessions helps combat insomnia, significantly improving the pattern and quality of your nightly rest so you wake up feeling energized.' },
+      { icon: '💪', title: 'Maintain Body Fitness', desc: 'Regular wellness treatments at Ayna Spa help maintain overall body fitness, boost your immune system, and optimally improve blood circulation throughout your entire body.' },
     ],
+    faqs: [
+      { q: 'Does Ayna Massage offer outcall services to hotels and apartments?', a: 'Absolutely! We provide convenient outcall massage services directly to your home, apartment, or hotel room anywhere within the Surabaya area and its surroundings.' },
+      { q: 'How do I make a reservation or booking?', a: 'You can easily book our services by clicking the WhatsApp button available on this website. Our responsive admin will quickly assist you in arranging a schedule with our therapists.' },
+      { q: 'Are the therapists at Ayna Massage professional?', a: 'Yes, all our therapists have gone through a rigorous selection and training process. They are highly experienced, exceptionally friendly, and professional in providing all of our massage therapies.' },
+    ]
   },
 };
 
@@ -126,12 +147,12 @@ export default function Home() {
       <Head>
         {/* === PRIMARY META === */}
         <title>{locale === 'en'
-          ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
-          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+          ? 'Ayna Massage & Spa Surabaya | Javanese Reflexology'
+          : 'Ayna Pijat Panggilan Surabaya | Spa & Reflexology'
         }</title>
         <meta name="description" content={locale === 'en'
-          ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. Professional service, aromatherapy, from 50K. Book via WhatsApp!'
-          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Layanan profesional, aroma therapy, harga mulai 50K. Booking via WhatsApp!'
+          ? 'Professional Javanese massage, foot reflexology & spa in Surabaya. Outcall home service with aromatherapy. Book via WhatsApp today!'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke rumah atau hotel Anda. Pesan sekarang!'
         } />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
@@ -144,12 +165,12 @@ export default function Home() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Ayna Massage Spa & Reflexology" />
         <meta property="og:title" content={locale === 'en'
-          ? 'Ayna Massage Spa & Reflexology | Traditional Javanese Massage Surabaya'
-          : 'Ayna Massage Spa & Reflexology | Pijat Tradisional Jawa Surabaya'
+          ? 'Ayna Massage & Spa Surabaya | Javanese Reflexology'
+          : 'Ayna Pijat Panggilan Surabaya | Spa & Reflexology'
         } />
         <meta property="og:description" content={locale === 'en'
-          ? 'Traditional Javanese Massage, Foot Reflexology & Totok Wajah in Surabaya. From 50K.'
-          : 'Pijat tradisional Jawa, Foot Reflexology & Totok Wajah di Surabaya. Harga mulai 50K.'
+          ? 'Professional Javanese massage, foot reflexology & spa in Surabaya. Outcall home service with aromatherapy. Book via WhatsApp today!'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke rumah atau hotel Anda. Pesan sekarang!'
         } />
         <meta property="og:image" content={`${DOMAIN}/logo-ayna.jpg`} />
         <meta property="og:image:width" content="1200" />
@@ -158,10 +179,10 @@ export default function Home() {
 
         {/* === TWITTER CARD === */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ayna Massage Spa &amp; Reflexology" />
+        <meta name="twitter:title" content={locale === 'en' ? 'Ayna Massage & Spa Surabaya' : 'Ayna Pijat Panggilan Surabaya'} />
         <meta name="twitter:description" content={locale === 'en'
           ? 'Javanese Traditional Massage · Foot Reflexology · Totok Wajah · Kerokan. From 50K.'
-          : 'Pijat tradisional Jawa · Foot Reflexology · Totok Wajah · Kerokan. Harga mulai 50K.'
+          : 'Layanan pijat panggilan Surabaya profesional. Ayna menawarkan reflexology, spa, dan pijat kesehatan langsung ke tempat Anda.'
         } />
         <meta name="twitter:image" content={`${DOMAIN}/logo-ayna.jpg`} />
 
@@ -174,7 +195,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "HealthAndBeautyBusiness",
               "name": "Ayna Massage Spa & Reflexology",
-              "description": "Pijat tradisional Jawa, Foot Reflexology, Totok Wajah, Kerokan Therapy, dan Massage + Scrub dengan harga terjangkau.",
+              "description": "Layanan Ayna pijat panggilan Surabaya untuk pijat tradisional Jawa, Foot Reflexology, Totok Wajah, dan Spa dengan harga terjangkau.",
               "url": "https://www.aynamassage.com",
               "telephone": "+6281230181886",
               "priceRange": "Rp 50.000 - Rp 225.000",
@@ -212,18 +233,17 @@ export default function Home() {
         />
       </Head>
 
-      {/* WATERMARK DEMO */}
-      <div className="watermark" aria-hidden="true">
-        <span className="watermark-text">DEMO</span>
-      </div>
-
       {/* NAVBAR */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-logo-text">✨ AYNA SPA</div>
+        <div className="nav-logo-container">
+          <div className="nav-logo-text">✨ AYNA SPA</div>
+        </div>
+
         <ul className="nav-links">
           <li><a href="#about">{t.navAbout}</a></li>
           <li><a href="#services">{t.navServices}</a></li>
           <li><a href="#benefits">{t.navBenefits}</a></li>
+          <li><a href="#faq">{t.navFaq}</a></li>
           <li><a href="#contact">{t.navContact}</a></li>
         </ul>
         <div className="nav-right">
@@ -262,9 +282,9 @@ export default function Home() {
           <div className="hero-badge">
             <span />{t.heroBadge}
           </div>
-          <Image src="/logo-ayna.jpg" alt="Logo Ayna Massage Spa & Reflexology — Pijat Tradisional Jawa" width={280} height={350} className="hero-logo" priority />
+          <Image src="/logo-ayna.jpg" alt={locale === 'en' ? "Ayna Massage Spa & Reflexology Surabaya" : "Ayna Pijat Panggilan Surabaya — Terapis Profesional"} width={280} height={350} className="hero-logo" priority />
           <h1 className="hero-title">
-            <em>Ayna</em> Massage<br />Spa &amp; Reflexology
+            {t.heroTitle}
           </h1>
           <p className="hero-subtitle">{t.heroSubtitle}</p>
           <p className="hero-desc">{t.heroDesc}</p>
@@ -281,7 +301,7 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-image-box reveal">
               <div className="about-logo-wrap">
-                <Image src="/logo-ayna.jpg" alt="Ayna Massage Spa — Traditional Javanese Wellness" width={260} height={260} />
+                <Image src="/logo-ayna.jpg" alt={locale === 'en' ? "Ayna Massage Spa — Traditional Javanese Wellness" : "Ayna Pijat Panggilan Surabaya — Reflexology & Spa"} width={260} height={260} />
               </div>
             </div>
             <div className="about-text reveal">
@@ -289,6 +309,7 @@ export default function Home() {
               <h2>{t.aboutHeading}</h2>
               <p>{t.aboutP1}</p>
               <p>{t.aboutP2}</p>
+              <p>{t.aboutP3}</p>
               <div className="about-stats">
                 <div className="stat-card">
                   <div className="stat-num">5+</div>
@@ -361,6 +382,22 @@ export default function Home() {
                 <div className="benefit-icon">{b.icon}</div>
                 <h3 className="benefit-title">{b.title}</h3>
                 <p className="benefit-desc">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section faq" id="faq">
+        <div className="section-inner">
+          <p className="section-label reveal">{t.faqLabel}</p>
+          <h2 className="section-title reveal">{t.faqTitle}</h2>
+          <div className="faq-list">
+            {t.faqs.map((f, i) => (
+              <div className="faq-item reveal" key={i}>
+                <h3 className="faq-q">{f.q}</h3>
+                <p className="faq-a">{f.a}</p>
               </div>
             ))}
           </div>

@@ -52,7 +52,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(80px, 18vw, 220px);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.60);
+  color: rgba(255, 255, 255, 0.40);
   transform: rotate(-35deg);
   letter-spacing: 0.3em;
   user-select: none;
@@ -685,6 +685,46 @@ body {
   font-weight: 300;
 }
 
+/* FAQ */
+.faq {
+  background: var(--dark-3);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 16px;
+  padding: 24px 32px;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  background: rgba(201, 168, 76, 0.05);
+  border-color: rgba(201, 168, 76, 0.25);
+}
+
+.faq-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+}
+
+.faq-a {
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
 /* CONTACT */
 .contact {
   background: var(--dark-2);
@@ -902,3 +942,59 @@ body {
   font-size: 16px;
   opacity: 0.7;
 }
+
+/* COUNTDOWN TIMER */
+.nav-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.countdown-desktop {
+  margin-top: 2px;
+}
+
+.countdown-mobile {
+  display: none;
+}
+
+.countdown-timer {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff4d4d;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+}
+
+.punishment-emote {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(100px, 40vw, 400px);
+}
+
+@media(max-width: 768px) {
+  .nav-logo-container {
+    align-items: center;
+  }
+  .countdown-desktop {
+    display: none;
+  }
+  .countdown-mobile {
+    display: block;
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .countdown-timer {
+    font-size: 11px;
+  }
+}
